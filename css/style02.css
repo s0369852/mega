@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* 레이아웃 */
+#header {
+    width: 100%;
+    border-bottom: 1px solid #c6c6c6;
+    height: 63px;
+    /* background-color: rgba(0,0,0,.1); */
+}
+
+/* 가운데 영역 */
+.container {
+    position: relative;
+    margin: 0 auto;
+    width: 1280px;
+    /* background-color: rgba(0,0,0,.1); */
+}
+
+/* 로우 영역 */
+.row {padding: 0 24px;}
+/* 한 줄 이라고 생각하면 된다. (부트스트랩과 비슷하다고 생각하면 된다.) */
+
+/* 헤더 영역 */
+.header {}
+.header h1 {float: left;}
+/* float을 사용하면 구조가 깨진다. => height값이 없어진다. 
+    => ".clearfix" 라는 걸 사용. 
+    문제의 해결책은 4가지
+    1. 똑같이 float을 사용한다. = 깨지는 영역에 똑같이 float을 쓰면 해결되지만 계속적으로 float을 써야하는 문제점이 생긴다. (비추) 
+    2. clear:both;를 사용한다. = 레이아웃이 복잡해지면 어디가 깨지는지 구별할 수가 없어 사용하기 애매하다. (비추)
+    3. 상위 박스한테 overflow:hidden을 사용한다. = overflow의 원래 기능을 벗어나지만 이걸 쓰면 height값을 인식할 수 있다. 그래서 많이 사용한다. (가끔씩 추천)
+    4. .clearfix를 만들어 사용한다. = 가상으로 영역을 만들어 height값을 인식하도록 만드는 방법으로 현재로는 최선책이다. (추천)
+
+    * 레이아웃을 표현하려면 블록구조를 정렬할줄 알아야 한다. 
+    * float을 사용하면 블록구조를 정렬 할 수 있다.
+    * flaot을 사용하면 height값을 인식 못하는 문제점이 생긴다. 
+    * 그래서 4가지 방법이 있지만, 그 중 가장 추천하는 방법은 "overflow"와 "clearfix"
+    * "overflow"가 쓰기 편하지만 "2단 메뉴부분"이나 "드롭다운 메뉴"에서는 사용을 못한다. 
+        => 그래서 "clearfix"를 추천한다.
+    */
+.header h1 em {
+    display: inline-block;
+    padding: 15px 8px 5px 0;
+}
+.header h1 em img {
+    width: 155px;
+}
+.header h1 strong {
+    position: absolute;
+    top: 22px;
+    left: 194px;
+    display: block;
+}
+/* position: absolute를 준 이유는 나중에 반응형 할 때 컨트롤 하기 위해서. 
+    position을 사용하면 영역이 사라지지만, 여기선 크게 문제가 되지 않기 때문에 사용함.
+*/
+.header h1 strong img {width: 157px;}
+
+.header .nav {float: right;}
+.header .nav ul {border-left: 1px solid #c6c6c6;}
+.header .nav li {
+    float: left;
+    width: 103px;
+    text-align: center;
+    border-right: 1px solid #c6c6c6;
+}
+/* display:inline을 써도 가로로 정렬이 되는데, 폰트값 때문에 여백이 생긴다. => float: left */
+.header .nav li a {
+    padding: 19px 10px;
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: #444444;
+}
