@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+/* 레이아웃 */
+#header {
+    width: 100%;
+    border-bottom: 1px solid #c6c6c6;
+    height: 63px;
+    /* background-color: rgba(0,0,0,.1); */
+}
+#banner {position: relative;}
+
+/* 가운데 영역 */
+.container {
+    position: relative;
+    margin: 0 auto;
+    width: 1280px;
+    /* background-color: rgba(0,0,0,.1); */
+}
+
+/* 로우 영역 */
+.row {padding: 0 24px;}
+
+/* 헤더 영역 */
+.header h1 {float: left;}
+.header h1 em {
+    display: inline-block;
+    padding: 15px 8px 5px 0;
+}
+.header h1 em img {
+    width: 155px;
+}
+.header h1 strong {
+    position: absolute;
+    top: 22px;
+    left: 194px;
+    display: block;
+}
+.header h1 strong img {width: 157px;}
+.header .nav {float: right;}
+.header .nav ul {border-left: 1px solid #c6c6c6;}
+.header .nav li {
+    float: left;
+    width: 103px;
+    text-align: center;
+    border-right: 1px solid #c6c6c6;
+}
+.header .nav li a {
+    padding: 19px 10px;
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: #444444;
+}
+
+/* 배너 영역 */
+.banner_menu {
+    position: absolute;
+    overflow: hidden;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+/* 여기선 .clearfix대신 상위 박스 .banner_menu한테 overflow: hidden을 줬다. */
+.banner_menu a {
+    color: #ffffff;
+    font-size: 16px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+.banner_menu a:hover {color: #c1c1c1;}
+.banner_menu .bm_left {float: left;}
+.banner_menu .bm_left ul {padding-top: 5px;}
+.banner_menu .bm_left li {
+    position: relative;
+    display: inline;
+    margin-right: 30px;
+}
+/* float을 안주고 inline을 글씨가 있기 때문에 여백이 있어도 상관이 없다. */
+.banner_menu .bm_left li.total {margin-right: 20px;}
+.banner_menu .bm_left li.total a {
+    display: inline-block;
+    padding: 3px 10px;
+    font-style: 14px;
+    border: 1px solid #ffffff;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+.banner_menu .bm_left li.total a:hover {
+    background: #ffffff;
+    color: #000;
+    border-color: #000;
+}
+
+.banner_menu .bm_right {
+    overflow: hidden;
+    float: right;
+}
+.banner_menu .bm_right ul {
+    position: relative;
+    float: left;
+}
+/* ul이 2개 있으므로 float: left를 주고 상위 박스에다가 overflow: hidden을 줘서 구조를 잡았다. */
+.banner_menu .bm_right ul:first-child {padding-top: 6px;}
+.banner_menu .bm_right li {
+    position: relative;
+    display: inline;
+    margin-right: 20px;
+    text-align: center;
+}
+.banner_menu .bm_right li.line {margin-right: 30px;}
+.banner_menu .bm_right li.white {margin-right: 10px;}
+.banner_menu .bm_right li.white a {
+    display: inline-block;
+    padding: 7px 30px 9px 30px;
+    width: 80px;
+    background-color: #fff;
+    color: #3a0e6a;
+    border: 1px solid #ffffff;
+}
+.banner_menu .bm_right li.purple {margin-right: 0;}
+/* 오른쪽에 딱 달라붙게, row만 들어가게끔 작업을 한 것. */
+.banner_menu .bm_right li.purple a {
+    display: inline-block;
+    padding: 7px 30px 9px 30px;
+    width: 80px;
+    background-color: #3a0e6a;
+    color: #ffffff;
+    border: 1px solid #6e40c4;
+}
+
+.banner_menu li.line::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: -18px;
+    width: 1px;
+    height: 14px;
+    background-color: #ffffff;
+}
+/* "|" 가상요소로 메뉴들 사이 사이에 칸막이를 만들어 준것. 절대값으로 위치를 잡고 부모태그인 li(left,right)에다가 position: relative를 주었다. */
