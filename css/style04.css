@@ -1,0 +1,266 @@
+@charset "UTF-8";
+
+/* 레이아웃 */
+#mNav {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 14px;
+}
+#header {
+    width: 100%;
+    border-bottom: 1px solid #c6c6c6;
+    /* height: 63px; -> 영역을 잡기 위한 값. */
+    /* background-color: rgba(0,0,0,.1); */
+}
+#banner {position: relative;}
+
+/* 가운데 영역 */
+.container {
+    position: relative;
+    margin: 0 auto;
+    width: 1280px;
+    /* background-color: rgba(0,0,0,.1); */
+}
+
+/* 로우 영역 */
+.row {padding: 0 28px;}
+/* row라는 개념은 양 옆의 여백이 있고 그 안에 그리드 시스팀에 들어간다고 생각하면 된다. */
+
+/* 모바일 메뉴 */
+.ham {
+    padding: 15px 10px 10px;
+    /* paading으로 잡는 이유는 터치부분이기 때문에 터치부분은 손가락 한마디 만큼의 기본 크기가 있어야 한다.
+        그 영역을 잡기 위해서 하는 것이다. */
+    display: block;
+    width: 25px;
+    height: 10px;
+    /* background: rgba(0,0,0,.4); */
+}
+
+.ham span {
+    position: relative;
+    display: block;
+    width: 25px;
+    height: 4px;
+    background: #39106a;
+}
+
+.ham span:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 25px;
+    height: 4px;
+    background: #39106a;
+}
+/* :after 라고 :를 하나만 적어주면 IE9까지 호환성을 지켜주게 된다. (원래는 ":" 2개 적어주는 것이 맞다.) */
+
+.ham span::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 0;
+    width: 25px;
+    height: 4px;
+    background: #39106a;
+}
+
+/* 헤더 영역 */
+.header h1 {float: left;}
+.header h1 em {
+    display: inline-block;
+    padding: 15px 8px 5px 0;
+}
+.header h1 em img {
+    width: 155px;
+}
+.header h1 strong {
+    position: absolute;
+    top: 22px;
+    left: 194px;
+    display: block;
+}
+.header h1 strong img {width: 157px;}
+.header .nav {float: right;}
+.header .nav ul {border-left: 1px solid #c6c6c6;}
+.header .nav li {
+    float: left;
+    width: 103px;
+    text-align: center;
+    border-right: 1px solid #c6c6c6;
+}
+.header .nav li a {
+    padding: 19px 10px;
+    /* header의 영역을 잡기 위해 해놓은 height값을 없앴기 때문에 padding을 줄이면 height값도 같이 줄어 들게 된다.  */
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: #444444;
+}
+
+/* 배너 영역 */
+.banner_menu {
+    position: absolute;
+    overflow: hidden;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+.banner_menu a {
+    color: #ffffff;
+    font-size: 16px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+.banner_menu a:hover {color: #c1c1c1;}
+.banner_menu .bm_left {float: left;}
+.banner_menu .bm_left ul {padding-top: 5px;}
+.banner_menu .bm_left li {
+    position: relative;
+    display: inline;
+    margin-right: 30px;
+}
+.banner_menu .bm_left li.total {margin-right: 20px;}
+.banner_menu .bm_left li.total a {
+    display: inline-block;
+    padding: 3px 10px;
+    font-style: 14px;
+    border: 1px solid #ffffff;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+.banner_menu .bm_left li.total a:hover {
+    background: #ffffff;
+    color: #000;
+    border-color: #000;
+}
+
+.banner_menu .bm_right {
+    overflow: hidden;
+    float: right;
+}
+.banner_menu .bm_right ul {
+    position: relative;
+    float: left;
+}
+.banner_menu .bm_right ul:first-child {padding-top: 6px;}
+.banner_menu .bm_right li {
+    position: relative;
+    display: inline;
+    margin-right: 20px;
+    text-align: center;
+}
+.banner_menu .bm_right li.line {margin-right: 30px;}
+.banner_menu .bm_right li.white {margin-right: 10px;}
+.banner_menu .bm_right li.white a {
+    display: inline-block;
+    padding: 7px 30px 9px 30px;
+    width: 80px;
+    background-color: #fff;
+    color: #3a0e6a;
+    border: 1px solid #ffffff;
+}
+.banner_menu .bm_right li.purple {margin-right: 0;}
+.banner_menu .bm_right li.purple a {
+    display: inline-block;
+    padding: 7px 30px 9px 30px;
+    width: 80px;
+    background-color: #3a0e6a;
+    color: #ffffff;
+    border: 1px solid #6e40c4;
+}
+
+.banner_menu li.line::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: -18px;
+    width: 1px;
+    height: 14px;
+    background-color: #ffffff;
+}
+
+/* 미디어 쿼리 */
+/* 
+    반응형 웹페에지를 제작하려면 뷰포트와 미디어 쿼리를 사용해야 한다. 
+    뷰포트는 PC화면 비율을 모바일 비율로 바꿔주고, 
+    미디어 쿼리는 화면 크기에 따라 CSS를 제작한다.
+    미디어 쿼리는 가로 크기 뿐만 아니라 세로 크기도 구별해서 사용 할 수 있다. 
+    
+    @media [only / not][media type][and / ,](조건문){
+        실행문
+    }
+
+    => 복잡하다면 생략해서 사용할 수 있다. 
+    @media (min-width: 380px){실행문}
+
+    @media : 미디어 쿼리 시작을 의미 (생략 x)
+    only / not : only는 미디어 쿼리를 지원 하는 브라우저에서만 해석하고, not은 반대를 의미한다. (생략 o) 
+    media type : 미디어 유형을 설정한다. (생략 o) 
+    and / , : and는 둘다 조건에 맞아야 하고, ','는 하나만 맞아도 실행한다. (and, or) (생략 o)
+    조건문 / 실행문 : 화면 크기의 조건을 설정하고 그에 따른 실행문을 작성한다. (생략 x)
+
+    min
+    @media (min-width: 380px){실행문}
+    @media (min-width: 768px){실행문}
+    @media (min-width: 960px){실행문}
+    @media (min-width: 1280px){실행문}
+
+    max
+    @media (max-width: 1280px){실행문}
+    @media (max-width: 960px){실행문}
+    @media (max-width: 768px){실행문}
+    @media (max-width: 380px){실행문}
+
+    적용시키는 방법 (1번을 가장 많이 쓴다.)
+    1. 외부 링크에서 사용하는 방법. 
+        <link rel="stylesheet" href="style.css" />
+
+    2. 화면 크기별로 CSS 작성
+        <link rel="stylesheet" media="all and (min-width: 380px)" href="style.css" />
+
+    3. import 시키는 방법
+        @import url(style.css) all adn (min-width: 380px);
+*/
+
+    @media (max-width: 1290px) {
+        /* 1280으로 하면 오차가 날 수 있어, 1290까지 해놓은 것. */
+        /* 틀을 만들어 놓고 세부적으로 필요하면 더 만든다. */
+        .container {width: 100%;}
+        .header .nav li {width: 90px;}
+        .header .nav li a {padding: 17px 10px; font-size: 15px;}
+        .header h1 em {padding: 11px 8px 5px 0;}
+        .header h1 strong {top: 19px;}
+    }
+    @media (max-width: 1024px) {
+        .row {padding: 0 24px;}
+        #mNav {display: block;}
+        .nav {display: none;}
+        .header h1 {float: none; text-align: center;}
+        .header h1 strong {left: 24px;}
+    }
+    @media (max-width: 960px) {
+        
+    }
+    @media (max-width: 768px) {
+        .row {padding: 0 16px;}
+        #mNav {right: 6px;}
+        .header h1 strong {display: none;}
+        .header h1 {text-align: left;}
+        
+    }
+    @media (max-width: 480px) {
+        
+    }
+    @media (max-width: 320px) {
+        /* 아이폰se정도. */
+    }
