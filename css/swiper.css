@@ -80,6 +80,9 @@
                 opacity: 0.2;
                 z-index: 2;
         }
+        .swiper-container2 .swiper-slide:after {
+                opacity: 0;
+        }
         /* // 이미지를 살짝 어둡게 하는 작업 */
 
         .swiper-slide-invisible-blank {
