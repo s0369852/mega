@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+/* 여백 초기화 */
+
+body, div, ul, ol, li, dl, dd, dt, h1, h2, h3, h4, h5, h6,
+input, fieldset, legend, p, select, table, th, td, tr,
+textarea, button, form, figure, figcaption {margin:0; padding: 0;}
+
+/* a링크 초기화 */
+a {
+    color: #222;
+    text-decoration: none;
+}
+a:hover {color: #2698cd}
+
+/* 폰트 초기화 */
+body, input, textarea, select, button, table {
+    font-family:'Noto Sans KR', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif; 
+    font-size: 13px;
+    line-height: 1.5;
+    color: #222;  
+}
+
+/* 폰트 스타일 초기화 */
+em, address {font-style: normal;}
+
+/* 블릿기호 초기화 */
+ol, ul, li {list-style: none;}
+
+/* 제목 태그 초기화 */
+h1, h2, h3, h4, h5, h6 {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+/* 테두리 초기화 */
+img, fieldset {border: 0 none;}
+
+/* 버튼 초기화 */
+button {
+    border: 0;
+    background: transparent;
+}
+
+/* 반응형 */
+video, img {width: 100%;}
+
+/* clearfix */
+.clearfix {*zoom: 1;}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: block;
+    line-height: 0;
+}
+.clearfix::after {clear: both;}
+
+/* ir효과 */
+.ir_pm {
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+.ir_wa {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.ir_so {
+    position: absolute;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+/* 아이콘 이미지 최적화 작업 */
+.icon {background-image: url(../img/icon.png);}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+        only screen and (min-device-pixel-ratio: 1.5),
+        only screen and (min-resolution: 1.5dppx) {
+            .icon {background-image: url(../img/icon@2.png); background-size: 500px;}
+        }
+        
+/* => 평소에는 일반 이미지를 사용하다가, 이미지 해상도가 1.5이상 되면 그때는 icon이미지를 2x로 바꾸 겠다는 말. */
+
+        /* 화면 해상도에 따라 이미지를 따로 표현할 수 있습니다. 
+            .icon {background-image: url(일반이미지);}
+            @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+                    only screen and (min-device-pixel-ratio: 1.5),
+                    only screen and (min-resolution: 1.5dppx) {
+                        .icon {background-image: url(고해상도이미지);}
+                    }
+            
+            즉, 보통의 이미지는 일반 디바이스에서 잘 나온다.
+            하지만, 해상도가 높은 디바이스에서는 이미지가 흐리게 나온다. 
+            그래서 평소에 일반 이미지가 나오고, 레티나 디바이스에서는 고해상도 이미지가 나오게 하면 된다. 
+            이미지를 표현하는 방법이 2가지가 있듯, 
+            img태그를 이용할 때는 srcset,
+            background를 이용할 때는 media query
+
+            현재의 디바이스 별 해상도를 구별하는 방법
+            https://webkit.org/demos/srcset/
+                => 1x, 2x, 3x, 4x 확인할 수 있다.
+                                            
+            이미지는 사이트를 구성하는데 중요한 요소이며, 트래픽과 관련이 깊다.
+            각 디바이스 해상도 별로 이미지를 표현하는 방법은 사이트의 효율성과 관계 깊다.
+            * img태그를 사용한다면 srcset를 통해 해상도 별로 표현한다. 
+            * background를 사용한다면 Mediaquery의 pixel-ratio를 이용하면 된다.
+        */
