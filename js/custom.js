@@ -51,7 +51,7 @@ var swiper = new Swiper('.swiper-container2', {
 
 
 // 영화차트 탭 메뉴
-var movBtn = $(".movie_tilte > ul > li");
+var movBtn = $(".movie_title > ul > li");
 var movCont = $(".movie_chart > div");
     // 버튼도 4개 컨텐츠도 4개.
 

@@ -235,27 +235,27 @@
 /* 무비 */
 .movie {padding: 100px 0;}
 
-.movie_tilte {margin-bottom: 60px;}
-.movie_tilte ul {
+.movie_title {margin-bottom: 60px;}
+.movie_title ul {
     overflow: hidden;
     margin: 0 auto;
     width: 848px;
 }
-.movie_tilte li {
+.movie_title li {
     margin-right: -1px;
     float: left;
     width: 210px;
     text-align: center;
     border: 1px solid #c4c4c4;
 }
-.movie_tilte li a {
+.movie_title li a {
     display: block;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 700;
     color: #666666;
 }
-.movie_tilte li.active a {
+.movie_title li.active a {
     background-color: #666;
     color: #fff;
 }
