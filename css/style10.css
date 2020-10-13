@@ -9,6 +9,7 @@
 }
 #header {
     width: 100%;
+    background-color: #ffffff;
     border-bottom: 1px solid #c6c6c6;
     /* height: 63px; -> 영역을 잡기 위한 값. */
     /* background-color: rgba(0,0,0,.1); */
@@ -235,41 +236,42 @@
 /* 무비 */
 .movie {padding: 100px 0;}
 
-.movie_tilte {margin-bottom: 60px;}
-.movie_tilte ul {
+.movie_title {margin-bottom: 60px;}
+.movie_title ul {
     overflow: hidden;
     margin: 0 auto;
     width: 848px;
 }
-.movie_tilte li {
+.movie_title li {
     margin-right: -1px;
     float: left;
     width: 210px;
     text-align: center;
     border: 1px solid #c4c4c4;
 }
-.movie_tilte li a {
+.movie_title li a {
     display: block;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 700;
     color: #666666;
 }
-.movie_tilte li.active a {
+.movie_title li.active a {
     background-color: #666;
     color: #fff;
 }
 
 .movie_chart {
     overflow: hidden;
-    height: 592px;
+    position: relative;
+    z-index: 30;
+    /* 영화 차트가 제일 위로 올라오게, z-index값을 사용하고 싶을 경우, position : relative를 준다. (absolute는 절대값이어서 구조가 깨질수있다.) */
 } 
 
 .movie_chart .poster_box {
     float: left;
     margin-right: 18px;
     width: 292px;
-    height: 592px;
 }
 .movie_chart .poster_box:last-child {margin-right: 0;}
 
@@ -311,9 +313,12 @@
     background-color: #fff;
 }
 .poster_box .info h3 {
+    overflow: hidden;
     margin-bottom: 20px;
     font-size: 30px;
     font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     color: #333333;
 }
 .poster_box .info h3 span {
@@ -332,14 +337,9 @@
 .poster_box .info .info_btn {overflow: hidden;}
 .poster_box .info .info_btn a {
     float: left;
-    /* inline-block으로 되어있으면 문제는 딱 붙어있는 경우가 아니면 padding값이 생기기 때문에, float: left로 작업을 해준다. */
     box-sizing: border-box;
-    /* box-sizing: border-box
-        width값을 50px라고 가정하고, margin을 20px, padding을 10px, border값을 1px이라고 가정하면 width값은 총 90px이 된다.
-        즉, padding과 border는 width값에 포함되지 않는다. 
-    */
     margin-right: 2%;
-    padding: 15px;
+    padding: 15px 0;
     width: 49%;
     font-size: 18px;
     text-align: center;
@@ -394,7 +394,7 @@
         }
         .banner_menu .bm_right li.white a {padding: 7px 20px 9px;}
         .banner_menu .bm_right li.purple a {padding: 7px 20px 9px;}
-        /* //banner */
+        /* // banner */
 
         .slider {height: 500px;}
         .slider .swiper-slide h2 {
@@ -408,19 +408,91 @@
             font-size: 16px;
             padding-top: 35px;
         }
-        /* //swiper */
+        /* // swiper */
+
+        .movie_title ul {
+            width: auto;
+            /* width값을 없애는 방법은 업고, auto라고 주면 지정된 width값이 풀린다. */
+        }
+        .movie_title li {
+            width: 25%;
+            box-sizing: border-box;
+            /* li의 width값을 크기에 맞게 조절하기 위해서. */
+        }
+        /* // movie */
     }
 
     @media (max-width: 768px) {
+        body {background-color: #d9d7e0;}
         .row {padding: 0 16px;}
         /* // 공통 */
 
         #mNav {right: 6px;}
-        /* nav */
+        /* // nav */
 
         .header h1 strong {display: none;}
         .header h1 {text-align: left;}
         /* // header */
+
+        #movie .row {
+            margin: 24px;
+            padding: 24px;
+            background-color: #fff;
+        }
+        #movie .ir_so {
+            position: static;
+            padding-bottom: 20px;
+            width: auto;
+            height: auto;
+            line-height: normal;
+            text-indent: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .movie {padding: 0;}
+        .movie_title {margin-bottom: 30px;}
+        .movie_title ul {
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .movie_title ul::before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #e1e1e1;
+        }
+        .movie_title li {
+            width: auto;
+            border: 0;
+            /* 새로 만들기 위한 초기화 작업. li한테는 25%의 width값이 들어가 있었다. */
+        }
+        .movie_title li a {
+            position: relative;
+            margin-right: 35px;
+            padding: 0;
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+        }
+        .movie_title li.active a {
+            background: none;
+            color: #666666;
+        }
+        .movie_title li.active a::before {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
+            height: 2px;
+            background-color: #666666;
+        }
+        /* // movie */
         
     }
 
@@ -461,10 +533,85 @@
             padding-top: 30px;
         }
         /* // swiper */
+
+        #movie .container {position: relative;}
+        #movie .container::after {
+            content: '';
+            position: absolute;
+            z-index: 20;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 100%;
+            background-color: #d9d7e0;
+            /* 모바일 화면시 영화 포스터가 1개 반이 나오게 하기위해서, 하지만 그냥 하면 구조가 깨지니까 구조를 깨지않고 하기 위해 가상요소를 만들었다. */
+        }
+        #movie .row {
+            position: relative;
+            margin: 8px;
+            margin-right: 0;
+            padding: 16px;
+            padding-right: 0;
+            /* 영역을 일단 뚫게 되면 구조가 안맞기 때문에 가상요소를 넣어서 구조를 맞춰준다. */
+        }
+        #movie .row::after {
+            content: '';
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            right: 0;
+            width: 24px;
+            height: 100%;
+            background-color: #ffffff;
+            /* 모바일 화면시 영화 포스터가 1개 반이 나오게 하기위해서, 하지만 그냥 하면 구조가 깨지니까 구조를 깨지않고 하기 위해 가상요소를 만들었다. */
+        }
+        #movie .ir_so {
+            padding-bottom: 10px;
+            font-size: 18px;
+        }
+        .movie_title {margin-bottom: 20px;}
+        .movie_title ul {
+            padding-bottom: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .movie_title li a {
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        .movie_title li.active a::before {bottom: -8px;}
+        .poster_box .info {padding: 5px;}
+        .poster_box .info h3 {
+            margin: 5px 0 10px;
+            text-align: center;
+        }
+        .poster_box .info h3 span {display: none;}
+        .poster_box .info h3 strong {
+            display: block;
+            font-size: 19px;
+            font-weight: 300;
+            color: #222222;
+        }
+        .poster_box .info .info_btn a {
+            display: block;
+            box-sizing: border-box;
+            margin-right: 0;
+            margin-left: 24%;
+            margin-bottom: 5px;
+            padding: 5px;
+            width: 52%;
+            font-size: 14px;
+            color: #777777;
+            background-color: none;
+            border: 1px solid #dddddd;
+            /* 버튼이 하나만 들어가게 하고, 중간으로 위치시킨다. */
+        }
+        .poster_box .info .info_btn a:last-child {display: none;}
+        /* // movie */
     }
 
     @media (max-width: 480px) {
-        
     }
-    @media (max-width: 320px) {
+    @media (max-width: 360px) {
+        .movie_title li a {margin-right: 7px;}
     }

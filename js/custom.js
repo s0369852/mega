@@ -30,6 +30,23 @@ var swiper = new Swiper('.swiper-container2', {
     autoplay: {
         delay: 3000,
     },
+    breakpoints: {
+        // when window width is >= 600px
+        600: {
+            slidesPerView: 1.4,
+            spaceBetween: 24
+        },
+        // when window width is >= 768px
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 24
+        },
+        // when window width is >= 960px
+        960: {
+            slidesPerView: 3,
+            spaceBetween: 24
+        }
+    }
 });
 
 
