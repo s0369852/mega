@@ -113,6 +113,6 @@ function tabList(e){
     // 제거한 자식의 ul 태그를 숨겨준다. 
 }
 
-tapMenu.find("ul > li > a").click(tabList).focus();
+tapMenu.find("ul > li > a").click(tabList).focus(tabList);
 // tabMenu( = .notice)에 find를 이용해서 ul > li > a태그를 클릭했을 때, tabList를 실행한다.  
-// tab키를 눌렀을때 전체공지탭에서 아래 내용을 읽어야 하기때문에, focus()를 준다. 
+// tab키를 눌렀을때 전체공지탭에서 아래 내용을 읽어야 하기때문에, focus(tabList)를 준다. 
