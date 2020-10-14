@@ -49,7 +49,6 @@ var swiper = new Swiper('.swiper-container2', {
     }
 });
 
-
 // 영화차트 탭 메뉴
 var movBtn = $(".movie_title > ul > li");
 var movCont = $(".movie_chart > div");
@@ -81,3 +80,39 @@ movBtn.click(function(e){
     movCont.eq(index).css("display","block");
     // movCont(컨텐츠)의 번호(변수 index -> target.index())의 해당되는 것만 보여주게 만들어 준 것.
 });
+
+// 공지사항 탭 메뉴
+var tapMenu = $(".notice");
+
+// 컨텐츠 내용을 숨겨주세요!
+tapMenu.find("ul > li > ul").hide();
+// 먼저 찾아야 한다. ul 안에 있는 ul을 찾은 다음, 숨긴다.
+tapMenu.find("li.active > ul").show();
+// 여기서 li에 .active가 붙은거의 자식 ul만 보여지게 작업을 한다. 
+
+function tabList(e){
+    e.preventDefault();
+    // a태그의 href="#"의 기능을 차단 시켜준다. 
+    var target = $(this);
+    // 누가 정해질지 모르니가 변수로 target을 만든다.
+    target.next().show().parent("li").addClass("active").siblings("li").removeClass("active").find("ul").hide();
+    /*
+        여기서 next는 a태그의 형제인 ul (next() => 옆태그(형제태그)). ul태그를 show(보여주고) ul태그의 parent, 즉 부모 태그를 찾을 것이다. parent("li") => li라는 부모를 찾는다. 
+        addClass로 .active를 붙여주고, siblings("li")=> 그 형제인 li들을 찾아서, removeClass로 .active를 지워준다.
+        find로 ul을 찾아서 hide로 지워준다. 
+    */
+
+    /*
+        1. 버튼(a태그)을 클릭하면 부모관계의 li에게 .active를 추가시켜주고, 부모의 형제인 다른 li한테 있는 .active는 삭제시켜준다. 
+        2. 그리고 a태그의 형제관계인 ul을 보여줄 것이다. .active가 삭제된 li의 자식태그인 ul은 안보이게 해준다.
+    */
+
+    // 버튼을 클릭하면 형제의 ul을 우선 보여주고, 
+    // 부모의 li태그에 클래스를 추가하고,
+    // 선택된 li를 제외한 다른 형제들(li)의 클래스를 제거하고, 
+    // 제거한 자식의 ul 태그를 숨겨준다. 
+}
+
+tapMenu.find("ul > li > a").click(tabList).focus();
+// tabMenu( = .notice)에 find를 이용해서 ul > li > a태그를 클릭했을 때, tabList를 실행한다.  
+// tab키를 눌렀을때 전체공지탭에서 아래 내용을 읽어야 하기때문에, focus()를 준다. 
