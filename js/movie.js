@@ -104,7 +104,7 @@
 
         //  iframe 감추기 
         function hidePlayer(){ // 닫기버튼을 누르면 이게 활성화
-            player.obj.stopVideo();
+            player.obj.stopVideo(); // 껐다가 다시 켰을때 처음부터 재생이 되게끔 하는 것.
             $selector.overlay.hide();
             $selector.body.removeClass("modal_on");
             player.visible = false;
