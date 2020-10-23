@@ -253,7 +253,7 @@
     background-size: cover;
 }
 .slider .s_img2 {
-    background: url(../img/main_slider02_2000.jpg) no-repeat center center;
+    background: url(../img/swiper02.jpg) no-repeat center center;
     background-size: cover;
 }
 .slider .s_img3 {
@@ -774,14 +774,12 @@
 }
 
 /* 푸터 영역 */
-.footer {}
 .footer_sns {
     position: absolute;
     z-index: 1;
     top: 33px;
     right: 17px;
 }
-.footer_sns ul {}
 .footer_sns li {
     display: inline-block;
     margin: 0 2px;
